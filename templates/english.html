@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- APlayer CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css"/>
+
+    <title>Online music streaming website using html,css And javascript</title>
+    <style>
+        * {
+   box-sizing: border-box;
+}
+        body{
+            background-color: #1C2833;
+            font-family: Open sans;
+            color:#ECF0F1;;
+        }
+        img{
+            width: 100%;
+            height: 250px;
+        }
+        .main{
+            padding: 40px 0;
+        }
+        .col-md-3{
+            margin-bottom: 40px;
+        }
+        .album-poster{
+            position: relative;
+            display: block;
+            border-radius: 7px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px #3d2173a1;
+            transition: all ease 0.4s;
+        }
+        .album-poster:hover{
+            box-shadow: none;
+            transform: scale(0.98) translateY(5px);
+        }
+        h3{
+            font-size: 34px;
+            margin-bottom: 34px;
+            border-bottom: 4px solid #e6e6e6;
+            padding-bottom: 15px;
+            color:#ECF0F1;
+        }
+        p{
+            font-size: 15px;
+        }
+        h4{
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-top: 15px;
+            font-weight: 700;
+            color: #ECF0F1;
+        }
+
+
+        /*default is hide music player*/
+        #aplayer{
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            margin: 0;
+            box-shadow: 0 -2px 2px #dadada;
+            background-color: #fff;
+            transition: all ease 0.5s;
+        }
+        #aplayer.showPlayer{
+            bottom: 0;
+        }
+
+
+        /*MUSIC PLAYER CUSTOMIZING STYLE*/
+        span{
+            color: #000 !important;
+            font-size: 16px;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded{
+            background: #e0e0e0;
+            height: 4px;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played{
+            height: 4px;
+            background-color: #2196F3 !important;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb{
+            background-color: #2196F3 !important;
+        }
+
+        .aplayer .aplayer-icon{
+            width: 20px;
+            height: 20px;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path {
+            fill: #000;
+        }
+        .aplayer .aplayer-info .aplayer-music{
+            margin-bottom: 5px;
+        }
+
+
+    </style>
+    </head>
+    <body>
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h3>ENGLISH</h3>
+            </div>
+            <div class="col-md-3">
+                <a href="javascript:void();" class="album-poster" data-switch="0">
+                    <img src="https://1.bp.blogspot.com/-OSV5K3BeXfU/Xhtm97-6uEI/AAAAAAAAAqI/Km72aoQcw8sA6HkJihE0Qrevp-EuuPFXQCNcBGAsYHQ/s1600/Cheap-Thrills-Lyrics.jpg" alt="">
+                </a>
+                <h4>cheap thrills</h4>
+
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="1">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/9/98/Havana_%28featuring_Young_Thug%29_%28Official_Single_Cover%29_by_Camila_Cabello.png" alt="">
+                </a>
+                <h4>havana</h4>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="2">
+                    <img src="https://c.saavncdn.com/205/Stitches-English-2015-500x500.jpg" alt="">
+                </a>
+                <h4>Stitches</h4>
+
+            </div>
+
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="3">
+                    <img src="https://c.saavncdn.com/365/Illuminate-English-2016-500x500.jpg" alt="">
+                </a>
+                <h4>Treat you better</h4>
+
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="4">
+                    <img src="https://i.pinimg.com/originals/8e/cc/37/8ecc378210cd40d47bca0c954e0ef5a8.jpg" alt="">
+                </a>
+                <h4>Dusk till dawn</h4>
+
+            </div>
+
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="5">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/5/5e/5_Seconds_of_Summer_-_Easier.png" alt="">
+                </a>
+                <h4>Easier</h4>
+
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="6">
+                    <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2020%2F03%2Fgettyimages-1170408605-2000.jpg&q=85" alt="">
+                </a>
+                <h4>Wonder</h4>
+
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="7">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/9/9b/Taylor_Swift_Feat._Kendrick_Lamar_-_Bad_Blood_%28Official_Single_Cover%29.png" alt="">
+                </a>
+                <h4>Bad Blood</h4>
+
+            </div>
+
+
+        </div>
+
+
+
+        </div>
+
+
+
+
+
+
+    <div id="aplayer"></div>
+
+    <!-- Jquery Link -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <!-- Bootstrap Link -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- APlayer Jquery link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script>
+
+    <script>
+
+
+        // NOW I CLICK album-poster TO GET CURRENT SONG ID
+        $(".album-poster").on('click', function(e){
+            var dataSwitchId = $(this).attr('data-switch');
+            //console.log(dataSwitchId);
+
+            // and now i use aplayer switch function see
+            ap.list.switch(dataSwitchId); //this is static id but i use dynamic
+
+            // aplayer play function
+            // when i click any song to play
+            ap.play();
+
+            // click to slideUp player see
+            $("#aplayer").addClass('showPlayer');
+        });
+
+        const ap = new APlayer({
+            container: document.getElementById('aplayer'),
+            listFolded: true,
+            audio: [
+            {
+                name: 'cheap thrills',
+                artist: 'Sia',
+                // url: 'Chellamma.mp3',
+                url:"{{ url_for('static',filename='assets/cheapthrills.mp3') }}",
+                cover: 'https://1.bp.blogspot.com/-OSV5K3BeXfU/Xhtm97-6uEI/AAAAAAAAAqI/Km72aoQcw8sA6HkJihE0Qrevp-EuuPFXQCNcBGAsYHQ/s1600/Cheap-Thrills-Lyrics.jpg'
+            },
+            {
+                name: 'havana',
+                artist: 'Camilla cabello',
+                url: "{{ url_for('static',filename='assets/havana.mp3') }}",
+                cover: 'https://upload.wikimedia.org/wikipedia/en/9/98/Havana_%28featuring_Young_Thug%29_%28Official_Single_Cover%29_by_Camila_Cabello.png',
+            },
+
+            {
+                name: 'stitches',
+                artist: 'Shawn Mendes',
+                url: "{{ url_for('static',filename='assets/stitches.mp3') }}",
+                cover: 'https://c.saavncdn.com/205/Stitches-English-2015-500x500.jpg',
+            },
+            {
+                name: 'Treat You Better',
+                artist: 'Shawn Mendes',
+                url: "{{ url_for('static',filename='assets/Treatyoubetter.mp3') }}",
+                cover: 'https://c.saavncdn.com/365/Illuminate-English-2016-500x500.jpg',
+            },
+            {
+                name: 'Dusk till dawn',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/Dusktilldawn.mp3') }}",
+                cover: 'https://i.pinimg.com/originals/8e/cc/37/8ecc378210cd40d47bca0c954e0ef5a8.jpg',
+            },
+            {
+                name: 'Easier',
+                artist: '5sos',
+                url: "{{ url_for('static',filename='assets/Easier.mp3') }}",
+                cover: 'https://upload.wikimedia.org/wikipedia/en/5/5e/5_Seconds_of_Summer_-_Easier.png',
+            },
+            {
+                name: 'Wonder',
+                artist: 'Shawn Mendes',
+                url: "{{ url_for('static',filename='assets/wonder.mp3') }}",
+                cover: 'https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F6%2F2020%2F03%2Fgettyimages-1170408605-2000.jpg&q=85',
+            },
+            {
+                name: 'Bad Blood',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/Badblood.mp3') }}",
+                cover: 'https://upload.wikimedia.org/wikipedia/en/9/9b/Taylor_Swift_Feat._Kendrick_Lamar_-_Bad_Blood_%28Official_Single_Cover%29.png',
+            },
+
+
+            ]
+        });
+    </script>
+
+    </body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- APlayer CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css"/>
+
+    <title>Online music streaming website using html,css And javascript</title>
+    <style>
+        * {
+   box-sizing: border-box;
+}
+        body{
+            background-color: #1C2833;
+            font-family: Open sans;
+            color:#ECF0F1;;
+        }
+        img{
+            width: 100%;
+            height: 250px;
+        }
+        .main{
+            padding: 40px 0;
+        }
+        .col-md-3{
+            margin-bottom: 40px;
+        }
+        .album-poster{
+            position: relative;
+            display: block;
+            border-radius: 7px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px #3d2173a1;
+            transition: all ease 0.4s;
+        }
+        .album-poster:hover{
+            box-shadow: none;
+            transform: scale(0.98) translateY(5px);
+        }
+        h3{
+            font-size: 34px;
+            margin-bottom: 34px;
+            border-bottom: 4px solid #e6e6e6;
+            padding-bottom: 15px;
+            color:#ECF0F1;
+        }
+        p{
+            font-size: 15px;
+        }
+        h4{
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-top: 15px;
+            font-weight: 700;
+            color: #ECF0F1;
+        }
+
+
+        /*default is hide music player*/
+        #aplayer{
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            margin: 0;
+            box-shadow: 0 -2px 2px #dadada;
+            background-color: #fff;
+            transition: all ease 0.5s;
+        }
+        #aplayer.showPlayer{
+            bottom: 0;
+        }
+
+
+        /*MUSIC PLAYER CUSTOMIZING STYLE*/
+        span{
+            color: #000 !important;
+            font-size: 16px;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded{
+            background: #e0e0e0;
+            height: 4px;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played{
+            height: 4px;
+            background-color: #2196F3 !important;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb{
+            background-color: #2196F3 !important;
+        }
+
+        .aplayer .aplayer-icon{
+            width: 20px;
+            height: 20px;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path {
+            fill: #000;
+        }
+        .aplayer .aplayer-info .aplayer-music{
+            margin-bottom: 5px;
+        }
+        .topnav {
+          overflow: hidden;
+          background-color: #1d1d1d;
+        }
+
+        .topnav a {
+          float: left;
+          color: #f2f2f2;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          font-size: 17px;
+        }
+
+        .topnav a:hover {
+          background-color: #ddd;
+          color: black;
+        }
+
+        .topnav a.active {
+          background-color: #ff0000;
+          color: white;
+        }
+
+    </style>
+    </head>
+    <body>
+      <div class="topnav">
+      <a href="home">Home</a>
+
+      <a class="active" href="playlist">Playlist</a>
+      <a href="Albums">Albums</a>
+      <a href="contact">Contact</a>
+
+      <a href="about">About</a>
+
+    </div>
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h3>New Releases</h3>
+            </div>
+            <div class="col-md-3">
+                <a href="javascript:void();" class="album-poster" data-switch="0">
+                    <img src="https://a10.gaanacdn.com/images/song/56/30978756/crop_480x480_1594902321.jpg" alt="">
+                </a>
+                <h4>Chellamma</h4>
+
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="1">
+                    <img src="https://img.bestwap2.in/load/MP3_Songs/Pop_Songs/New%20Pop%20Mp3%20Songs/poster19-Genda%20Phool%20Mp3%20Song%20-%20Badshah%202020.jpg" alt="">
+                </a>
+                <h4>Genda Phool</h4>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="2">
+                    <img src="https://i.pinimg.com/236x/c2/f3/e4/c2f3e48e926c2b30a9e2b8e63e9ebb13.jpg" alt="">
+                </a>
+                <h4>Dil Ibadat</h4>
+                <p>Naagin - 2020</p>
+            </div>
+
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="3">
+                    <img src="https://media1.popsugar-assets.com/files/thumbor/esU_pg6WVu8oH9pvbUtLq2xnl-M/fit-in/728xorig/filters:format_auto-!!-:strip_icc-!!-/2020/08/21/765/n/1922564/8eaac2285f4002dfaab271.40308540_/i/bts-dynamite-music-video-outfits.png" alt="">
+                </a>
+                <h4>BTS</h4>
+
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="4">
+                    <img src="https://scstylecaster.files.wordpress.com/2020/08/blackpink-2.jpg" alt="">
+                </a>
+                <h4>Black pink</h4>
+
+            </div>
+
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="5">
+                    <img src="https://www.audcope.com/wp-content/uploads/2019/11/taylor-swift-me.jpg" alt="">
+                </a>
+                <h4>I'd be the man</h4>
+
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="6">
+                    <img src="https://1.bp.blogspot.com/-9nNiipVWx5w/XzVAfXAhlUI/AAAAAAAArKU/pO87Rx9CJAYBppC4KnBr_yyCtL0ul042wCLcBGAsYHQ/w1200-h630-p-k-no-nu/Charlie%2BPuth%2B%2526%2Bblackbear%2B-%2BHard%2Bon%2BYourself%2BLyrics.jpg" alt="">
+                </a>
+                <h4>Charlie_Puth_blackbear_-_Hard_On_Yourself</h4>
+
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="7">
+                    <img src="https://img.wynk.in/unsafe/320x180/top/http://s3-ap-south-1.amazonaws.com/wynk-music-cms/music/Manasu-Maree-songbanner.png" alt="">
+                </a>
+                <h4>Manasu Maree</h4>
+
+            </div>
+
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="8">
+                    <img src="https://images.hungama.com/c/1/aea/1a3/38381190/38381190_300x300.jpg" alt="">
+                </a>
+                <h4>Milegi</h4>
+
+            </div>
+
+        </div>
+
+
+
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Most popular</h3>
+            </div>
+            <div class="col-md-2">
+                <a href="#" class="album-poster" data-switch="9" >
+                    <img src="https://i.pinimg.com/originals/91/91/66/919166c514da5bbe451171ed36d12a1e.jpg" alt="">
+                </a>
+                <h4>Rowdy Baby</h4>
+            </div>
+            <div class="col-md-2">
+                <a href="#" class="album-poster" data-switch="10">
+                    <img src="https://static.toiimg.com/thumb/msid-64918083,imgsize-113784,width-800,height-600,resizemode-75/64918083.jpg" alt="">
+                </a>
+                <h4>Inkem Inkem</h4>
+            </div>
+            <div class="col-md-2">
+                <a href="#" class="album-poster" data-switch="11">
+                    <img src="https://images.indianexpress.com/2019/02/luka-chuppi.jpg" alt="">
+                </a>
+                <h4>Cola Cola</h4>
+            </div>
+
+            <div class="col-md-2">
+                <a href="#" class="album-poster" data-switch="12">
+                    <img src="https://a10.gaanacdn.com/images/albums/96/1512896/crop_480x480_1512896.jpg" alt="">
+                </a>
+                <h4>Baby</h4>
+            </div>
+            <div class="col-md-2">
+                <a href="#" class="album-poster" data-switch="13">
+                    <img src="https://c-sf.smule.com/s-sf-bck4/arr/50/ac/b1bb5ff9-0c5b-4044-b838-95310b2509f7_1024.jpg" alt="">
+                </a>
+                <h4>Unakaga</h4>
+            </div>
+            <div class="col-md-2">
+                <a href="#" class="album-poster" data-switch="14">
+                    <img src="https://i0.wp.com/www.unitedbypop.com/wp-content/uploads/2019/04/maxresdefault.jpg?fit=1130%2C636&ssl=1" alt="">
+                </a>
+                <h4>Who do you love?</h4>
+            </div>
+            <div class="col-md-2">
+                <a href="#" class="album-poster" data-switch="15">
+                    <img src="https://i.ytimg.com/vi/4ZZa4cRR5Mk/hqdefault.jpg" alt="">
+                </a>
+                <h4>BTS-Tomorrow</h4>
+            </div>
+            <div class="col-md-2">
+                <a href="#" class="album-poster" data-switch="16">
+                    <img src="https://i.ytimg.com/vi/CXNv4_wQjKQ/maxresdefault.jpg" alt="">
+                </a>
+                <h4>5sos-Youngblood</h4>
+            </div>
+            <div class="col-md-2">
+                <a href="#" class="album-poster" data-switch="17">
+                    <img src="https://i.ytimg.com/vi/McjQCtnQyZY/maxresdefault.jpg" alt="">
+                </a>
+                <h4>Belageddhu</h4>
+            </div>
+            <div class="col-md-2">
+                <a href="#" class="album-poster" data-switch="18">
+                    <img src="https://3.bp.blogspot.com/-uRb0TTVa3K0/WyPqEQpzB_I/AAAAAAAAEHQ/_b56LpqZ1aAw0Z8a1tuHHSFZUMo6oyvBgCLcBGAs/s1600/maxresdefault.jpg" alt="">
+                </a>
+                <h4>Orasaadha</h4>
+            </div>
+            <div class="col-md-2">
+                <a href="#" class="album-poster" data-switch="19">
+                    <img src="https://a10.gaanacdn.com/images/song/63/28276563/crop_480x480_1569643099.jpg" alt="">
+                </a>
+                <h4>Samajavaragamana</h4>
+            </div>
+            <div class="col-md-2">
+                <a href="#" class="album-poster" data-switch="20">
+                    <img src="https://i.ytimg.com/vi/l75z7FrYRXI/maxresdefault.jpg" alt="">
+                </a>
+                <h4>Muqabla</h4>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+
+    <div id="aplayer"></div>
+
+    <!-- Jquery Link -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <!-- Bootstrap Link -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- APlayer Jquery link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script>
+
+    <script>
+
+
+        // NOW I CLICK album-poster TO GET CURRENT SONG ID
+        $(".album-poster").on('click', function(e){
+            var dataSwitchId = $(this).attr('data-switch');
+            //console.log(dataSwitchId);
+
+            // and now i use aplayer switch function see
+            ap.list.switch(dataSwitchId); //this is static id but i use dynamic
+
+            // aplayer play function
+            // when i click any song to play
+            ap.play();
+
+            // click to slideUp player see
+            $("#aplayer").addClass('showPlayer');
+        });
+
+        const ap = new APlayer({
+            container: document.getElementById('aplayer'),
+            listFolded: true,
+            audio: [
+            {
+                name: 'Chellamma',
+                artist: 'Artist Name',
+                // url: 'Chellamma.mp3',
+                url:"{{ url_for('static',filename='assets/Chellamma.mp3') }}",
+                cover: 'https://a10.gaanacdn.com/images/song/56/30978756/crop_480x480_1594902321.jpg'
+            },
+            {
+                name: 'Genda Phool',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/Genda.mp3') }}",
+                cover: 'https://img.bestwap2.in/load/MP3_Songs/Pop_Songs/New%20Pop%20Mp3%20Songs/poster19-Genda%20Phool%20Mp3%20Song%20-%20Badshah%202020.jpg',
+            },
+
+            {
+                name: 'dil-ibadat-kar-raha-hai',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/dil.mp3') }}",
+                cover: 'https://i.pinimg.com/236x/c2/f3/e4/c2f3e48e926c2b30a9e2b8e63e9ebb13.jpg',
+            },
+            {
+                name: 'Dynamite',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/bts.mp3') }}",
+                cover: 'https://media1.popsugar-assets.com/files/thumbor/esU_pg6WVu8oH9pvbUtLq2xnl-M/fit-in/728xorig/filters:format_auto-!!-:strip_icc-!!-/2020/08/21/765/n/1922564/8eaac2285f4002dfaab271.40308540_/i/bts-dynamite-music-video-outfits.png',
+            },
+            {
+                name: 'Black Pink',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/blackpink.mp3') }}",
+                cover: 'https://scstylecaster.files.wordpress.com/2020/08/blackpink-2.jpg',
+            },
+            {
+                name: 'I had be the man',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/the man.mp3') }}",
+                cover: 'https://www.audcope.com/wp-content/uploads/2019/11/taylor-swift-me.jpg',
+            },
+            {
+                name: 'Charlie_Puth_blackbear_-_Hard_On_Yourself',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/Charlie.mp3') }}",
+                cover: 'https://1.bp.blogspot.com/-9nNiipVWx5w/XzVAfXAhlUI/AAAAAAAArKU/pO87Rx9CJAYBppC4KnBr_yyCtL0ul042wCLcBGAsYHQ/w1200-h630-p-k-no-nu/Charlie%2BPuth%2B%2526%2Bblackbear%2B-%2BHard%2Bon%2BYourself%2BLyrics.jpg',
+            },
+            {
+                name: 'Manasu Maree',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/manasu.mp3') }}",
+                cover: 'https://img.wynk.in/unsafe/320x180/top/http://s3-ap-south-1.amazonaws.com/wynk-music-cms/music/Manasu-Maree-songbanner.png',
+            },
+            {
+                name: 'Milegi Milegi',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/Milegi.mp3') }}",
+                cover: 'https://images.hungama.com/c/1/aea/1a3/38381190/38381190_300x300.jpg',
+            },
+            {
+                name: 'Rowdy Baby',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/rowdybaby.mp3') }}",
+                cover: 'https://i.pinimg.com/originals/91/91/66/919166c514da5bbe451171ed36d12a1e.jpg',
+            },
+            {
+                name: 'Inkem Inkem',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/inkem.mp3') }}",
+                cover: 'https://static.toiimg.com/thumb/msid-64918083,imgsize-113784,width-800,height-600,resizemode-75/64918083.jpg',
+            },
+            {
+                name: 'Cola Cola',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/cola.mp3') }}",
+                cover: 'https://images.indianexpress.com/2019/02/luka-chuppi.jpg',
+            },
+            {
+                name: 'Baby',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/baby.mp3') }}",
+                cover: 'https://a10.gaanacdn.com/images/albums/96/1512896/crop_480x480_1512896.jpg',
+            },
+            {
+                name: 'unakaga vala ninaikiren',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/Unakaga.mp3') }}",
+                cover: 'https://c-sf.smule.com/s-sf-bck4/arr/50/ac/b1bb5ff9-0c5b-4044-b838-95310b2509f7_1024.jpg',
+            },
+
+            {
+                name: 'Who do you love?',
+                artist: '5sos and chainsmokers',
+                url: "{{ url_for('static',filename='assets/love.mp3') }}",
+                cover: 'https://i0.wp.com/www.unitedbypop.com/wp-content/uploads/2019/04/maxresdefault.jpg?fit=1130%2C636&ssl=1',
+            },
+            {
+                name: 'BTS-Tomorrow',
+                artist: 'BTS',
+                url: "{{ url_for('static',filename='assets/tomorrow.mp3') }}",
+                cover: 'https://i.ytimg.com/vi/4ZZa4cRR5Mk/hqdefault.jpg',
+            },
+            {
+                name: 'Youngblood',
+                artist: '5sos',
+                url: "{{ url_for('static',filename='assets/summer.mp3') }}",
+                cover: 'https://i.ytimg.com/vi/CXNv4_wQjKQ/maxresdefault.jpg',
+            },
+            {
+                name: 'Belageddu',
+                artist: 'Vijay Prakash',
+                url: "{{ url_for('static',filename='assets/Belageddu.mp3') }}",
+                cover: 'https://i.ytimg.com/vi/McjQCtnQyZY/maxresdefault.jpg',
+            },
+            {
+                name: 'Orasaadha',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/Orasaadha.mp3') }}",
+                cover: 'https://3.bp.blogspot.com/-uRb0TTVa3K0/WyPqEQpzB_I/AAAAAAAAEHQ/_b56LpqZ1aAw0Z8a1tuHHSFZUMo6oyvBgCLcBGAs/s1600/maxresdefault.jpg',
+            },
+            {
+                name: 'Samajavaragamana',
+                artist: 'Sid sriram',
+                url: "{{ url_for('static',filename='assets/Samajavaragamana.mp3') }}",
+                cover: 'https://a10.gaanacdn.com/images/song/63/28276563/crop_480x480_1569643099.jpg',
+            },
+            {
+                name: 'Muqabla',
+                artist: 'dd',
+                url: "{{ url_for('static',filename='assets/Muqabla.mp3') }}",
+                cover: 'https://i.ytimg.com/vi/l75z7FrYRXI/maxresdefault.jpg',
+            },
+
+
+            ]
+        });
+    </script>
+
+    </body>
+</html>

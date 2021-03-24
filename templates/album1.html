@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- APlayer CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css"/>
+
+    <title>Online music streaming website using html,css And javascript</title>
+    <style>
+        * {
+   box-sizing: border-box;
+}
+        body{
+            background-color: #1C2833;
+            font-family: Open sans;
+            color:#ECF0F1;;
+        }
+        img{
+            width: 100%;
+            height: 250px;
+        }
+        .main{
+            padding: 40px 0;
+        }
+        .col-md-3{
+            margin-bottom: 40px;
+        }
+        .album-poster{
+            position: relative;
+            display: block;
+            border-radius: 7px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px #3d2173a1;
+            transition: all ease 0.4s;
+        }
+        .album-poster:hover{
+            box-shadow: none;
+            transform: scale(0.98) translateY(5px);
+        }
+        h3{
+            font-size: 34px;
+            margin-bottom: 34px;
+            border-bottom: 4px solid #e6e6e6;
+            padding-bottom: 15px;
+            color:#ECF0F1;
+        }
+        p{
+            font-size: 15px;
+        }
+        h4{
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-top: 15px;
+            font-weight: 700;
+            color: #ECF0F1;
+        }
+
+
+        /*default is hide music player*/
+        #aplayer{
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            margin: 0;
+            box-shadow: 0 -2px 2px #dadada;
+            background-color: #fff;
+            transition: all ease 0.5s;
+        }
+        #aplayer.showPlayer{
+            bottom: 0;
+        }
+
+
+        /*MUSIC PLAYER CUSTOMIZING STYLE*/
+        span{
+            color: #000 !important;
+            font-size: 16px;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded{
+            background: #e0e0e0;
+            height: 4px;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played{
+            height: 4px;
+            background-color: #2196F3 !important;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb{
+            background-color: #2196F3 !important;
+        }
+
+        .aplayer .aplayer-icon{
+            width: 20px;
+            height: 20px;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path {
+            fill: #000;
+        }
+        .aplayer .aplayer-info .aplayer-music{
+            margin-bottom: 5px;
+        }
+
+        button {
+          display: inline-block;
+          background-color: #7b38d8;
+          border-radius: 10px;
+          border: 4px double #cccccc;
+          color: #eeeeee;
+          text-align: center;
+          font-size: 28px;
+          padding: 20px;
+          width: 200px;
+          -webkit-transition: all 0.5s;
+          -moz-transition: all 0.5s;
+          -o-transition: all 0.5s;
+          transition: all 0.5s;
+          cursor: pointer;
+          margin: 5px;
+        }
+    </style>
+    </head>
+    <body>
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h3>ALBUMS</h3>
+            </div>
+            <div class="col-md-3">
+                  <form  method="post" action="/english">
+
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/5_Seconds_of_Summer_at_Enmore_Theatre%2C_Sydney%2C_30.04.14.jpg/220px-5_Seconds_of_Summer_at_Enmore_Theatre%2C_Sydney%2C_30.04.14.jpg" class="thumbnails" alt="">
+                <button class="submit" type="submit" name="submit" id="submit">ENGLISH</button>
+
+             </form>
+            </div>
+
+            <div class="col-md-3">
+              <form  method="post" action="/kpop">
+
+                    <img src="https://6.vikiplatform.com/image/dea8cc063b624e309b5147e91a92ba4a.jpg?x=b&a=0x0&s=460x268&e=t&f=t&cb=1" class="thumbnails" alt="">
+                <button class="submit" type="submit" name="submit" id="submit">KPOP</button>
+
+            </form>
+            </div>
+
+            <div class="col-md-3">
+              <form  method="post" action="/regional">
+
+                    <img src="https://music.rushisbiz.com/wp-content/uploads/2019/03/tamil-telugu2.jpg" class="thumbnails" alt="">
+                <button class="submit" type="submit" name="submit" id="submit">REGIONAL</button>
+
+              </form>
+            </div>
+
+            <div class="col-md-3">
+              <form  method="post" action="/rock">
+
+                    <img src="https://lh3.googleusercontent.com/proxy/HPnSaxS2ZFgcrVFCzUbprM3oiyJJgM_TtIt1KApp7uY37V2MrU4QXOiiddYIzeWF4ZOWIPwdGY7tJFx5P0227c8NwS5JnVeHcqcIdXBYAzdJqoXypz-2ica4URhXGlTB-kOCNvnTELdBNAKDT-9B2SiBZC3FXkSS9qU" alt="">
+              <button class="submit" type="submit" name="submit" id="submit">ROCK</button>
+
+              </form>
+            </div>
+            <div class="col-md-3">
+                <form  method="post" action="/melody">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSy_u-SE__G2Nc-8E7lQswwe8Qa2MXQh6o20g&usqp=CAU" alt="">
+                    <button class="submit" type="submit" name="submit" id="submit">MELODY</button>
+
+                </form>
+            </div>
+
+            <div class="col-md-3">
+              <form  method="post" action="/rap">
+
+                    <img src="https://cdnaws.recis.io/i/img/00/e8/ac/20_4ac510_w320.jpg" alt="">
+                      <button class="submit" type="submit" name="submit" id="submit">RAP</button>
+
+
+            </form>
+            </div>
+
+        </div>
+
+
+
+        </div>
+
+
+
+
+
+
+
+    </body>
+</html>

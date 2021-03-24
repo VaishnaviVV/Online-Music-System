@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- APlayer CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css"/>
+
+    <title>Online music streaming website using html,css And javascript</title>
+    <style>
+        * {
+   box-sizing: border-box;
+}
+        body{
+            background-color: #1C2833;
+            font-family: Open sans;
+            color:#ECF0F1;;
+        }
+        img{
+            width: 100%;
+            height: 250px;
+        }
+        .main{
+            padding: 40px 0;
+        }
+        .col-md-3{
+            margin-bottom: 40px;
+        }
+        .album-poster{
+            position: relative;
+            display: block;
+            border-radius: 7px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px #3d2173a1;
+            transition: all ease 0.4s;
+        }
+        .album-poster:hover{
+            box-shadow: none;
+            transform: scale(0.98) translateY(5px);
+        }
+        h3{
+            font-size: 34px;
+            margin-bottom: 34px;
+            border-bottom: 4px solid #e6e6e6;
+            padding-bottom: 15px;
+            color:#ECF0F1;
+        }
+        p{
+            font-size: 15px;
+        }
+        h4{
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-top: 15px;
+            font-weight: 700;
+            color: #ECF0F1;
+        }
+
+
+        /*default is hide music player*/
+        #aplayer{
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            margin: 0;
+            box-shadow: 0 -2px 2px #dadada;
+            background-color: #fff;
+            transition: all ease 0.5s;
+        }
+        #aplayer.showPlayer{
+            bottom: 0;
+        }
+
+
+        /*MUSIC PLAYER CUSTOMIZING STYLE*/
+        span{
+            color: #000 !important;
+            font-size: 16px;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-loaded{
+            background: #e0e0e0;
+            height: 4px;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played{
+            height: 4px;
+            background-color: #2196F3 !important;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-bar-wrap .aplayer-bar .aplayer-played .aplayer-thumb{
+            background-color: #2196F3 !important;
+        }
+
+        .aplayer .aplayer-icon{
+            width: 20px;
+            height: 20px;
+        }
+        .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon path {
+            fill: #000;
+        }
+        .aplayer .aplayer-info .aplayer-music{
+            margin-bottom: 5px;
+        }
+
+
+    </style>
+    </head>
+    <body>
+<div class="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <h3>MELODY</h3>
+            </div>
+            <div class="col-md-3">
+                <a href="javascript:void();" class="album-poster" data-switch="0">
+                    <img src="https://i1.sndcdn.com/artworks-000144647039-dxayui-t500x500.jpg" alt="">
+                </a>
+                <h4>Thalli-Pogathey</h4>
+
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="1">
+                    <img src="https://lyricsraag.com/wp-content/uploads/2019/10/rpilp6pi8fo.jpg" alt="">
+                </a>
+                <h4>Maruvaarthai Pesathey</h4>
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="2">
+                    <img src="https://m.media-amazon.com/images/I/812v-Y4pxQL._SS500_.jpg" alt="">
+                </a>
+                <h4>Let-Me-Love-You</h4>
+
+            </div>
+
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="3">
+                    <img src="https://a10.gaanacdn.com/images/albums/52/1839852/crop_480x480_1839852.jpg" alt="">
+                </a>
+                <h4>Shape Of You</h4>
+
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="4">
+                    <img src="https://a10.gaanacdn.com/images/song/36/29789036/crop_480x480_1584095829.jpg" alt="">
+                </a>
+                <h4>Vasthunnaa Vachestunna</h4>
+
+            </div>
+
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="5">
+                    <img src="https://i.ytimg.com/vi/NtTGqvD67pE/maxresdefault.jpg" alt="">
+                </a>
+                <h4>Manasa Manasa</h4>
+
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="6">
+                    <img src="https://a10.gaanacdn.com/images/song/57/28026957/crop_480x480_1566542675.jpg" alt="">
+                </a>
+                <h4>Pachtaoge</h4>
+
+            </div>
+            <div class="col-md-3">
+                <a href="#" class="album-poster" data-switch="7">
+                    <img src="https://i.pinimg.com/474x/ae/a7/b1/aea7b1db471643e6f4e79115a9381820.jpg" alt="">
+                </a>
+                <h4>Mera Pyar Tera Pyar</h4>
+
+            </div>
+
+
+        </div>
+
+
+
+        </div>
+
+
+
+
+
+
+    <div id="aplayer"></div>
+
+    <!-- Jquery Link -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <!-- Bootstrap Link -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <!-- APlayer Jquery link -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script>
+
+    <script>
+
+
+        // NOW I CLICK album-poster TO GET CURRENT SONG ID
+        $(".album-poster").on('click', function(e){
+            var dataSwitchId = $(this).attr('data-switch');
+            //console.log(dataSwitchId);
+
+            // and now i use aplayer switch function see
+            ap.list.switch(dataSwitchId); //this is static id but i use dynamic
+
+            // aplayer play function
+            // when i click any song to play
+            ap.play();
+
+            // click to slideUp player see
+            $("#aplayer").addClass('showPlayer');
+        });
+
+        const ap = new APlayer({
+            container: document.getElementById('aplayer'),
+            listFolded: true,
+            audio: [
+            {
+                name: 'Thalli-Pogathey',
+                artist: 'Sia',
+                // url: 'Chellamma.mp3',
+                url:"{{ url_for('static',filename='assets/Thalli-Pogathey.mp3') }}",
+                cover: 'https://i1.sndcdn.com/artworks-000144647039-dxayui-t500x500.jpg'
+            },
+            {
+                name: 'Maruvaarthai Pesathey',
+                artist: 'Camilla cabello',
+                url: "{{ url_for('static',filename='assets/Maruvaarthai Pesathey.mp3') }}",
+                cover: 'https://lyricsraag.com/wp-content/uploads/2019/10/rpilp6pi8fo.jpg',
+            },
+
+            {
+                name: 'Let-Me-Love-You',
+                artist: 'Shawn Mendes',
+                url: "{{ url_for('static',filename='assets/Let-Me-Love-You.mp3') }}",
+                cover: 'https://m.media-amazon.com/images/I/812v-Y4pxQL._SS500_.jpg',
+            },
+            {
+                name: 'Shape Of You',
+                artist: 'Shawn Mendes',
+                url: "{{ url_for('static',filename='assets/Shape Of You.mp3') }}",
+                cover: 'https://a10.gaanacdn.com/images/albums/52/1839852/crop_480x480_1839852.jpg',
+            },
+            {
+                name: 'Vasthunnaa Vachestunna',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/Vasthunnaa Vachestunna.mp3') }}",
+                cover: 'https://a10.gaanacdn.com/images/song/36/29789036/crop_480x480_1584095829.jpg',
+            },
+            {
+                name: 'Manasa Manasa',
+                artist: '5sos',
+                url: "{{ url_for('static',filename='assets/Manasa Manasa.mp3') }}",
+                cover: 'https://i.ytimg.com/vi/NtTGqvD67pE/maxresdefault.jpg',
+            },
+            {
+                name: 'Wonder',
+                artist: 'Shawn Mendes',
+                url: "{{ url_for('static',filename='assets/Pachtaoge.mp3') }}",
+                cover: 'https://a10.gaanacdn.com/images/song/57/28026957/crop_480x480_1566542675.jpg',
+            },
+            {
+                name: 'Mera Pyar Tera Pyar',
+                artist: 'Artist Name',
+                url: "{{ url_for('static',filename='assets/Mera Pyar Tera Pyar.mp3') }}",
+                cover: 'https://i.pinimg.com/474x/ae/a7/b1/aea7b1db471643e6f4e79115a9381820.jpg',
+            },
+
+
+            ]
+        });
+    </script>
+
+    </body>
+</html>

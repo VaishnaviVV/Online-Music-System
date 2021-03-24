@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			box-sizing:border-box;
+			font-family: 'poppins',sans-serif;
+		}
+		.contact{
+			position:relative;
+			min-height:100vh;
+			padding:50px 100px;
+			display:flex;
+			justify-content:center;
+			align-items:center;
+			flex-direction:column;
+			background-image: url(https://i.pinimg.com/originals/09/64/f3/0964f397e8be5af311807b1fff5b7208.jpg);
+			background-size: cover;
+		}
+		.contact .content{
+			max-width: 800px;
+			text-align: center;
+		}
+		.contact .content h2
+		{
+			font-size: 36px;
+			font-weight: 500;
+			color:#fff;
+		}
+		.contact .content p{
+			font-weight: 300;
+			color:#fff;
+		}
+		.container{
+			width:100%;
+			display:flex;
+			justify-content: center;
+			align-items: center;
+			margin-top: 30px;
+		}
+		.container .contactInfo
+		{
+			width: 50%;
+			display: flex;
+			flex-direction: column;
+		}
+		.container .contactInfo .box
+		{
+			position: relative;
+			padding: 25px 0;
+			display: flex;
+		}
+		.container .contactInfo .box .icon
+		{
+			min-width: 60px;
+			height: 60px;
+			background: #fff;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 50%;
+			font-size: 22px;
+		}
+		.container .contactInfo .box .text
+		{
+			display: flex;
+			margin-left: 20px;
+			font-size: 16px;
+			color: #fff;
+			flex-direction: column;
+			font-weight: 300;
+		}
+		h1
+		{
+			color:#FFFFFF;
+			font-weight: 600;
+			margin-bottom: 20px;
+			font-size: 50px;
+
+		}
+		.container .contactInfo .box .text h3{
+			font-weight: 500;
+			color:#FF8C00;
+		}
+		.contactForm
+		{
+			width:40%;
+			padding: 40px;
+			background: #fff;
+		}
+		.contactForm h2
+		{
+			font-size: 30px;
+			color: #333;
+			font-weight: 500;
+		}
+		.contactForm .inputBox
+		{
+			position: relative;
+			width:100%;
+			margin-top: 20px;
+		}
+		.contactForm .inputBox input,
+		.contactForm .inputBox textarea
+		{
+			width:100%;
+			padding:5px 0;
+			font-size: 16px;
+			margin: 10px 0;
+			border:none;
+			border-bottom: 2px solid #333;
+			outline: none;
+			resize: none;
+		}
+		.contactForm .inputBox span
+		{
+			position: absolute;
+			left:0;
+			padding:5px 0;
+			font-size: 16px;
+			margin: 10px 0;
+			pointer-events:none;
+			transition: 0.5s;
+			color:#666;
+		}
+		.contactForm .inputBox input:focus ~ span,
+		.contactForm .inputBox input:valid ~ span,
+		.contactForm .inputBox textarea:focus ~span,
+		.contactForm .inputBox textarea:valid ~span
+		{
+			color:#e91e63;
+			font-size: 12px;
+			transform: translateY(-20px);
+		}
+		.contactForm .inputBox input[type="submit"]
+		{
+			width:100px;
+			background: #FF0000;
+			color:#fff;
+			border:none;
+			cursor:pointer;
+			padding:10px;
+			font-size: 18px;
+		}
+		@media(max-width:991px)
+		{
+			.contact
+			{
+				padding:50px;
+
+			}
+			.container
+			{
+				flex-direction:column;
+			}
+			.container .contactInfo
+			{
+				margin-bottom:40px;
+			}
+			.container .contactInfo
+			.contactForm
+			{
+				width:100%;
+			}
+		}
+
+
+	</style>
+	<script src=
+    "https://smtpjs.com/v3/smtp.js">
+  </script>
+
+  <script type="text/javascript">
+
+    function sendEmail() {
+      var FullName = document.getElementById("FullName").value;
+      var email = document.getElementById("email").value;
+      var msg = document.getElementById("msg").value;
+      Email.send({
+        Host: "smtp.gmail.com",
+        Username: "ctsseproject@gmail.com",
+        Password: "Lkjhgfdsa12345",
+        To: "ctsseproject@gmail.com",
+        From: "ctsseproject@gmail.com",
+        Subject: "Sending Email using javascript",
+        Body: msg,
+      })
+        .then(function (message) {
+          alert("mail sent successfully")
+        });
+    }
+  </script>
+	<meta name="viewport" contact="width=device-width,initial-scale=1.0">
+	<title>contact us</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	</head>
+	<body>
+		<section class="contact">
+			<div class="content">
+				<h1>CONTACT US</h1>
+			</div>
+			<div class="container">
+				<div class="contactInfo">
+					<div class="box">
+					<div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+					<div class="text">
+						<h3>Address</h3>
+						<p>Kelambakkam - Vandalur Road,<br>Rajan Nagar, Chennai, <br>Tamil Nadu 600127</p>
+					</div>
+				</div>
+				<div class="box">
+					<div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+					<div class="text">
+						<h3>Phone</h3>
+						<p>123-456-7890</p>
+					</div>
+				</div>
+				<div class="box">
+					<div class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
+					<div class="text">
+						<h3>Email</h3>
+						<p>dazzvaish2001@gmail.com</p>
+					</div>
+				</div>
+			</div>
+			<div class="contactForm">
+				<form >
+					<h2>Send Message</h2>
+					<div class="inputBox">
+						<input type="text" name="FullName" id="FullName"  required="required">
+						<span>Full Name</span>
+					</div>
+					<div class="inputBox">
+						<input type="text" name="email" id="email" required="required">
+						<span>Email</span>
+					</div>
+					<div class="inputBox">
+						<textarea name="msg" id="msg"  required="required"></textarea>
+						<span>Type your message...</span>
+					</div>
+					<div class="inputBox">
+						<input type="Submit" name="send" value="send" id="send" onclick="sendEmail()">
+					</div>
+				</form>
+		</div>
+	</div>
+		</section>
+
+	</body>
+	</html>
