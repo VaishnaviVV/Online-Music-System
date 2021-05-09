@@ -4,7 +4,7 @@ import os
 from gevent.pywsgi import WSGIServer
 import mysql.connector
 app = Flask(__name__)
-conn=mysql.connector.connect(host="remotemysql.com",user="ll32gwnKpe",password="3TMmSIiOZX",database="ll32gwnKpe")
+conn=mysql.connector.connect(host="remotemysql.com",user="",password="",database="")
 cursor=conn.cursor()
 @app.route('/home')
 def home():
