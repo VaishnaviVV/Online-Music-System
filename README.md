@@ -27,4 +27,9 @@ HTML, CSS, JS and MYSQL(https://remotemysql.com/)
 
 ![image](https://user-images.githubusercontent.com/66016300/125296981-7418dd80-e344-11eb-8114-671ba5b1fef6.png)
 
+# ABOUT
+![image](https://user-images.githubusercontent.com/66016300/125297115-94e13300-e344-11eb-8451-60b26b750e46.png)
+
+# CONTACT
+![image](https://user-images.githubusercontent.com/66016300/125297157-9f9bc800-e344-11eb-8737-4a718b3f5923.png)
 
